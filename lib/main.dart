@@ -27,9 +27,9 @@ class PomodoroScreen extends StatefulWidget {
 }
 
 class _PomodoroScreenState extends State<PomodoroScreen> {
-  final int _workTime = 20;
-  final int _shortBreakTime = 5;
-  final int _longBreakTime = 10;
+  final int _workTime = 25 * 60;
+  final int _shortBreakTime = 5 * 60;
+  final int _longBreakTime = 30 * 60;
   int _cycles = 0;
   int _totalCycles = 0;
   int _currentTimer = 0;
@@ -46,10 +46,10 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_currentTimer == 0) {
         timer.cancel();
-        if(_cycles < 3){
-        _currentTimer = _shortBreakTime;
-        _startShortTimer(_shortBreakTime);
-        }else{
+        if (_cycles < 3) {
+          _currentTimer = _shortBreakTime;
+          _startShortTimer(_shortBreakTime);
+        } else {
           _currentTimer = _longBreakTime;
           _startLongTimer(_longBreakTime);
         }
@@ -91,7 +91,6 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
       }
     });
   }
-
 
   void _toggleTimer() {
     setState(() {
